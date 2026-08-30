@@ -2,7 +2,7 @@ name: Daily getter
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '43 2,16 * * *'
   workflow_dispatch: # Allows manual run from GitHub Actions UI
 
 jobs:
