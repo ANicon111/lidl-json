@@ -2,11 +2,11 @@ name: Daily getter
 
 on:
   schedule:
-    - cron: '0 2,18 * * *' # Runs daily at 02:00 and 18:00 UTC
+    - cron: '10 2,16 * * *' # Runs daily at 02:00 and 16:00 UTC
   workflow_dispatch: # Allows manual run from GitHub Actions UI
 
 jobs:
-  scrape:
+  getter:
     runs-on: ubuntu-latest
 
     permissions:
