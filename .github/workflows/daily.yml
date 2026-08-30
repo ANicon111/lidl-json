@@ -2,8 +2,8 @@ name: Daily getter
 
 on:
   schedule:
-    - cron: '43 2,16 * * *'
-  workflow_dispatch: # Allows manual run from GitHub Actions UI
+    - cron: '57 2,16,18 * * *'
+  workflow_dispatch:
 
 jobs:
   getter:
@@ -18,6 +18,8 @@ jobs:
 
       - name: Setup Python
         uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
       - name: Run getter
         run: python main.py
@@ -32,6 +34,3 @@ jobs:
           git add data.json
           git commit -m "chore: automated product data update"
           git push origin data --force
-      #
-      # - name: Keep workflow active
-      #   uses: gautamkrishnar/keepalive-workflow@v2
