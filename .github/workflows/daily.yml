@@ -2,7 +2,7 @@ name: Daily getter
 
 on:
   schedule:
-    - cron: '10 2,16 * * *' # Runs daily at 02:00 and 16:00 UTC
+    - cron: '*/5 * * * *'
   workflow_dispatch: # Allows manual run from GitHub Actions UI
 
 jobs:
@@ -32,3 +32,6 @@ jobs:
           git add data.json
           git commit -m "chore: automated product data update"
           git push origin data --force
+
+      - name: Keep workflow active
+        uses: gautamkrishnar/keepalive-workflow@v2
