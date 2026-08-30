@@ -7,7 +7,7 @@ BASE_URL = "https://digital-leaflet.lidlplus.com/api/v1/DK"
 
 def fetch_json(url):
     req = urllib.request.Request(
-        url,
+        url, 
         headers={"User-Agent": "Mozilla/5.0"}
     )
     with urllib.request.urlopen(req) as response:
@@ -21,7 +21,7 @@ def fetch_lidl_raw_data():
         print(f"Failed to fetch campaign groups: {e}")
         sys.exit(1)
 
-    campaigns = []
+    campaigns = {}
     groups = campaign_groups.get("groups", [])
 
     for week in groups:
@@ -32,7 +32,7 @@ def fetch_lidl_raw_data():
 
             try:
                 raw_campaign_data = fetch_json(f"{BASE_URL}/campaigns/{campaign_id}")
-                campaigns.append(raw_campaign_data)
+                campaigns[campaign_id] = raw_campaign_data
             except Exception as e:
                 print(f"Warning: Failed to fetch campaign {campaign_id}: {e}")
                 continue
